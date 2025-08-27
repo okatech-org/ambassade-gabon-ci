@@ -1,0 +1,24 @@
+{
+  "name": "Ambassade du Gabon en Côte d'Ivoire",
+  "short_name": "Ambassade Gabon CI",
+  "description": "Site officiel de l'Ambassade de la République du Gabon en République de Côte d'Ivoire",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#16A085",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "fr",
+  "orientation": "portrait-primary"
+}
