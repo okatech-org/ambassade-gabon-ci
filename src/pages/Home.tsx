@@ -472,6 +472,17 @@ const Home = () => {
       {/* Contact Quick Access */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Logo Section */}
+          <div className="text-center mb-12">
+            <div className="flex justify-center mb-6">
+              <img 
+                src="/Sceau du Gabon.png" 
+                alt="Sceau de la République du Gabon" 
+                className="w-20 h-20 object-contain drop-shadow-lg"
+              />
+            </div>
+          </div>
+          
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 mb-6">Contact Rapide</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">

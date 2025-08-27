@@ -7,6 +7,24 @@ const Footer = () => {
     <footer className="bg-gray-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Logo Section */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <img 
+                src="/Sceau du Gabon.png" 
+                alt="Sceau de la République du Gabon" 
+                className="w-12 h-12 object-contain"
+              />
+              <div>
+                <h3 className="text-lg font-semibold text-white">Ambassade du Gabon</h3>
+                <p className="text-gray-300 text-sm">République de Côte d'Ivoire</p>
+              </div>
+            </div>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Représentation diplomatique officielle de la République du Gabon en République de Côte d'Ivoire.
+            </p>
+          </div>
+
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>

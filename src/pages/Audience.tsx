@@ -104,6 +104,13 @@ const Audience = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
+          <div className="flex justify-center mb-8">
+            <img 
+              src="/Sceau du Gabon.png" 
+              alt="Sceau de la République du Gabon" 
+              className="w-20 h-20 object-contain drop-shadow-lg"
+            />
+          </div>
           <h1 className="text-4xl font-bold text-gray-800 mb-6">Demande d'Audience avec l'Ambassadeur</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Son Excellence l'Ambassadeur reçoit sur rendez-vous pour les affaires officielles, 

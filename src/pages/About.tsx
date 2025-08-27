@@ -7,6 +7,13 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="text-center mb-16">
+          <div className="flex justify-center mb-8">
+            <img 
+              src="/Sceau du Gabon.png" 
+              alt="Sceau de la République du Gabon" 
+              className="w-24 h-24 object-contain drop-shadow-lg"
+            />
+          </div>
           <h1 className="text-4xl font-bold text-gray-800 mb-6">À Propos de l'Ambassade</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             L'Ambassade du Gabon en Côte d'Ivoire : Plus de 60 ans de relations diplomatiques 

@@ -54,8 +54,12 @@ const Header = () => {
           <div className="flex items-center justify-between h-24">
             <div className={`flex items-center ${headerVisible ? 'animate-slide-in-left' : ''}`}>
               <Link to="/" className="flex items-center gap-4 group">
-                <div className="w-18 h-18 bg-gabon-gradient rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300 gpu-accelerated">
-                  <span className="text-white font-bold text-xl" aria-label="Gabon">GA</span>
+                <div className="w-16 h-16 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 gpu-accelerated">
+                  <img 
+                    src="/Sceau du Gabon.png" 
+                    alt="Sceau de la République du Gabon" 
+                    className="w-full h-full object-contain drop-shadow-lg"
+                  />
                 </div>
                 <div>
                   <h1 className="text-xl font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-200">
