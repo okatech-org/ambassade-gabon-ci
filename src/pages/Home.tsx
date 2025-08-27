@@ -162,7 +162,7 @@ const Home = () => {
             <div className={`${heroVisible ? 'animate-fade-in-up animate-delay-200' : 'opacity-0'}`}>
               <h1 id="hero-title" className="text-5xl md:text-7xl font-bold mb-6 text-balance">
                 <span className="bg-gradient-to-r from-white via-yellow-200 to-white bg-clip-text text-transparent">
-                  Ambassade du Gabon
+                  {/* Title removed */}
                 </span>
               </h1>
             </div>
@@ -206,7 +206,7 @@ const Home = () => {
       {/* Stats Section */}
       <section 
         ref={statsRef}
-        className="py-20 bg-white relative overflow-hidden"
+        className="py-12 bg-white relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 ${statsVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
@@ -234,7 +234,7 @@ const Home = () => {
       </section>
 
       {/* Mission Statement */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
@@ -275,13 +275,13 @@ const Home = () => {
       {/* Quick Services */}
       <section 
         ref={servicesRef}
-        className="py-20 bg-white" 
+        className="py-16 bg-gradient-to-r from-green-50 to-emerald-50" 
         aria-labelledby="services-title"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 ${servicesVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <h2 id="services-title" className="text-4xl font-bold text-gray-800 mb-6">Services Rapides</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Accédez rapidement à nos services les plus demandés avec une interface moderne et intuitive</p>
+          <div className={`text-center mb-12 ${servicesVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <h2 id="services-title" className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Services Consulaires</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Accédez rapidement à nos services consulaires essentiels</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" role="list">
@@ -315,13 +315,13 @@ const Home = () => {
       {/* Latest News */}
       <section 
         ref={newsRef}
-        className="py-20 bg-gradient-to-br from-gray-50 to-white" 
+        className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50" 
         aria-labelledby="news-title"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`flex justify-between items-center mb-16 ${newsVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <div className={`flex justify-between items-center mb-12 ${newsVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <div className="text-center md:text-left">
-              <h2 id="news-title" className="text-4xl font-bold text-gray-800 mb-4">Actualités Principales</h2>
+              <h2 id="news-title" className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Actualités Diplomatiques</h2>
               <p className="text-xl text-gray-600">Les dernières nouvelles du Gabon et de l'Ambassade</p>
             </div>
             <Link
@@ -368,43 +368,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section 
-        ref={testimonialsRef}
-        className="py-20 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 ${testimonialsVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">Témoignages</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ce que disent nos ressortissants et visiteurs de nos services
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index}
-                className={`card-elevated p-8 text-center hover-lift ${testimonialsVisible ? `animate-scale-in animate-delay-${(index + 1) * 150}` : 'opacity-0'}`}
-              >
-                <div className="flex justify-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-6 italic leading-relaxed">"{testimonial.content}"</p>
-                <div>
-                  <h4 className="font-semibold text-gray-800">{testimonial.name}</h4>
-                  <p className="text-gray-600 text-sm">{testimonial.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 bg-gabon-gradient text-white relative overflow-hidden">
+      <section className="py-12 bg-gabon-gradient text-white relative overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-white bg-opacity-10 rounded-full animate-float"></div>
@@ -445,79 +411,90 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Important Notice */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white" aria-labelledby="notice-title">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 id="notice-title" className="text-3xl font-bold mb-6">
-              <span role="img" aria-label="Formulaire">📋</span> Inscription Consulaire Obligatoire
-            </h2>
-            <p className="text-xl mb-8 max-w-4xl mx-auto opacity-95 leading-relaxed">
-              Tous les ressortissants gabonais résidant en Côte d'Ivoire doivent s'inscrire au registre consulaire. 
-              Cette inscription vous garantit une assistance consulaire et l'accès facilité à nos services.
-            </p>
-            <button
-              onClick={() => navigate('/services')}
-              className="btn bg-white text-blue-600 px-10 py-4 font-bold hover:bg-gray-100 hover-lift"
-            >
-              S'inscrire Maintenant
-            </button>
-          </div>
-        </div>
-      </section>
 
-      {/* FAQ Section */}
-      <FAQ />
-
-      {/* Contact Quick Access */}
-      <section className="py-20 bg-white">
+      {/* FAQ & Contact Section */}
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Logo Section */}
-          <div className="text-center mb-12">
-            <div className="flex justify-center mb-6">
-              <img 
-                src="/Sceau du Gabon.png" 
-                alt="Sceau de la République du Gabon" 
-                className="w-20 h-20 object-contain drop-shadow-lg"
-              />
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* FAQ Column */}
+            <div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-6">Questions Fréquentes</h2>
+              <FAQ compact={true} />
             </div>
-          </div>
-          
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">Contact Rapide</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Besoin d'assistance ? Contactez-nous directement
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center group hover-lift">
-              <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-                <MapPin className="h-8 w-8" />
+            
+            {/* Contact Column */}
+            <div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-6">Contact Rapide</h2>
+              <div className="bg-white rounded-xl shadow-lg p-8">
+                <div className="flex justify-center mb-6">
+                  <img 
+                    src="/Sceau du Gabon.png" 
+                    alt="Sceau de la République du Gabon" 
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800 mb-1">Adresse</h3>
+                      <p className="text-gray-600">Cocody Danga-Nord, Abidjan</p>
+                      <p className="text-gray-600">01 BP 3765 Abidjan 01</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800 mb-1">Téléphone</h3>
+                      <p className="text-gray-600">+225 27 22 44 51 54</p>
+                      <p className="text-gray-600">+225 27 22 44 51 74</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Mail className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
+                      <p className="text-gray-600 text-sm break-all">ambga.cotedivoire@diplomatie.gouv.ga</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Calendar className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800 mb-1">Horaires d'ouverture</h3>
+                      <p className="text-gray-600">Lundi - Vendredi : 8h30 - 15h30</p>
+                      <p className="text-gray-600">Fermé les weekends et jours fériés</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <button 
+                    onClick={() => navigate('/contact')}
+                    className="w-full btn btn-primary py-3 hover-lift"
+                  >
+                    Nous Contacter
+                  </button>
+                </div>
               </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Adresse</h3>
-              <p className="text-gray-600 text-sm">Cocody Danga-Nord, Abidjan</p>
-            </div>
-            <div className="text-center group hover-lift">
-              <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
-                <Phone className="h-8 w-8" />
-              </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Téléphone</h3>
-              <p className="text-gray-600 text-sm">+225 27 22 44 51 54</p>
-            </div>
-            <div className="text-center group hover-lift">
-              <div className="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-500 group-hover:text-white transition-all duration-300">
-                <Mail className="h-8 w-8" />
-              </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Email</h3>
-              <p className="text-gray-600 text-sm">ambga.cotedivoire@diplomatie.gouv.ga</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-700 text-white relative overflow-hidden" aria-labelledby="cta-title">
+      <section className="py-12 bg-gradient-to-r from-green-600 to-emerald-700 text-white relative overflow-hidden" aria-labelledby="cta-title">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-1/3 left-1/4 w-40 h-40 bg-white bg-opacity-5 rounded-full animate-float"></div>

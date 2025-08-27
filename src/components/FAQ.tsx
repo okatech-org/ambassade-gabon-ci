@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
-const FAQ = () => {
+interface FAQProps {
+  compact?: boolean;
+}
+
+const FAQ = ({ compact = false }: FAQProps) => {
   const [openItems, setOpenItems] = useState<number[]>([]);
   const [faqRef, faqVisible] = useIntersectionObserver({ threshold: 0.1 });
 
@@ -48,6 +52,50 @@ const FAQ = () => {
         : [...prev, index]
     );
   };
+
+  if (compact) {
+    return (
+      <div ref={faqRef}>
+        <div className="space-y-3">
+          {faqItems.slice(0, 4).map((item, index) => (
+            <div 
+              key={index} 
+              className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <button
+                onClick={() => toggleItem(index)}
+                className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-green-50 transition-colors"
+              >
+                <h3 className="text-sm font-semibold text-gray-800 pr-3">
+                  {item.question}
+                </h3>
+                {openItems.includes(index) ? (
+                  <ChevronUp className="h-4 w-4 text-green-600 flex-shrink-0" />
+                ) : (
+                  <ChevronDown className="h-4 w-4 text-green-600 flex-shrink-0" />
+                )}
+              </button>
+              
+              {openItems.includes(index) && (
+                <div className="px-4 pb-3">
+                  <p className="text-sm text-gray-600 leading-relaxed">{item.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-6">
+          <button 
+            onClick={() => window.location.href = '/contact'}
+            className="w-full btn btn-secondary py-3"
+          >
+            Plus de Questions
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={faqRef} className="py-20 bg-gradient-to-br from-gray-50 to-white">

@@ -63,8 +63,8 @@ const Header = () => {
                 className="w-16 h-16 object-contain drop-shadow-lg transition-transform duration-300 hover:scale-110"
               />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Ambassade du Gabon</h1>
-                <p className="text-sm text-gray-700">République de Côte d'Ivoire</p>
+                <h1 className="text-2xl font-bold text-gray-900 leading-tight">Ambassade du Gabon</h1>
+                <p className="text-[19.2px] font-bold text-gray-900 whitespace-nowrap -mt-1">En République de Côte d'Ivoire</p>
               </div>
             </Link>
 
