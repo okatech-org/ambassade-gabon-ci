@@ -1,150 +1,192 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, MapPin, Phone, Mail } from 'lucide-react';
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Calendar, Tag, ExternalLink } from 'lucide-react';
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
-  const [headerRef, headerVisible] = useIntersectionObserver({ threshold: 0.1 });
+const News = () => {
+  const navigate = useNavigate();
+  const [newsletterEmail, setNewsletterEmail] = React.useState('');
+  const [newsletterStatus, setNewsletterStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const navigation = [
-    { name: 'Accueil', href: '/' },
-    { name: 'À Propos', href: '/about' },
-    { name: 'Services Consulaires', href: '/services' },
-    { name: 'Demande d\'Audience', href: '/audience' },
-    { name: 'Actualités', href: '/news' },
-    { name: 'Découvrir le Gabon', href: '/gabon' },
-    { name: 'Contact', href: '/contact' },
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newsletterEmail)) {
+      setNewsletterStatus('error');
+      return;
+    }
+    
+    setNewsletterStatus('loading');
+    
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setNewsletterStatus('success');
+      setNewsletterEmail('');
+      setTimeout(() => setNewsletterStatus('idle'), 3000);
+    } catch (error) {
+      setNewsletterStatus('error');
+    }
+  };
+
+  const articles = [
+    {
+      title: 'S.E.M. Brice Clotaire Oligui Nguema élu 4ème Président du Gabon',
+      excerpt: 'Avec 90,35% des voix, le Président Oligui Nguema remporte l\'élection présidentielle d\'avril 2025, ouvrant une nouvelle ère pour le Gabon.',
+      content: 'L\'élection présidentielle du 20 avril 2025 a confirmé la confiance du peuple gabonais envers S.E.M. Brice Clotaire Oligui Nguema. Avec un score écrasant de 90,35% des suffrages exprimés, le Président entame un nouveau mandat axé sur la transformation structurelle du pays et le renforcement des institutions démocratiques.',
+      date: '21 Avril 2025',
+      category: 'Politique',
+      image: 'https://images.pexels.com/photos/6794590/pexels-photo-6794590.jpeg?auto=compress&cs=tinysrgb&w=800'
+    },
+    {
+      title: 'Lancement des Trois Grands Chantiers de 2025',
+      excerpt: 'Le Gabon lance ses projets phares : Port de Mayumba, ligne ferroviaire Bélinga-Boué-Mayumba et barrage hydroélectrique de Boué.',
+      content: 'Ces trois projets structurants vont révolutionner l\'économie gabonaise. Le port en eau profonde de Mayumba positionnera le Gabon comme hub logistique régional. La ligne ferroviaire ouvrira l\'exploitation minière de Bélinga. Le barrage de Boué garantira l\'indépendance énergétique. 163 000 emplois directs et indirects sont prévus.',
+      date: '15 Mars 2025',
+      category: 'Économie',
+      image: 'https://images.pexels.com/photos/1106468/pexels-photo-1106468.jpeg?auto=compress&cs=tinysrgb&w=800'
+    },
+    {
+      title: 'Renforcement de la Coopération Gabon-Côte d\'Ivoire',
+      excerpt: 'Signature de nouveaux accords de partenariat dans l\'agriculture, les mines et l\'énergie entre les deux pays frères.',
+      content: 'La Grande Commission Mixte Gabon-Côte d\'Ivoire a validé de nouveaux projets de coopération. L\'accent est mis sur le transfert de technologie agricole, l\'exploration minière conjointe et les échanges énergétiques. Ces partenariats renforcent les liens historiques entre nos nations.',
+      date: '8 Mars 2025',
+      category: 'Diplomatie',
+      image: 'https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=800'
+    },
+    {
+      title: 'Nouvelle Constitution Gabonaise Adoptée',
+      excerpt: 'Le Gabon se dote d\'une nouvelle Constitution moderne, renforçant la démocratie et la gouvernance.',
+      content: 'Adoptée en novembre 2024, la nouvelle Constitution gabonaise modernise les institutions et renforce l\'État de droit. Elle consacre les droits fondamentaux, améliore la séparation des pouvoirs et introduit de nouveaux mécanismes de participation citoyenne.',
+      date: '20 Novembre 2024',
+      category: 'Politique',
+      image: 'https://images.pexels.com/photos/6077368/pexels-photo-6077368.jpeg?auto=compress&cs=tinysrgb&w=800'
+    },
+    {
+      title: 'Le Gabon dans l\'Opération Serengeti 2.0',
+      excerpt: 'Participation active du Gabon dans la lutte internationale contre la cybercriminalité.',
+      content: 'Le Gabon participe à l\'opération Serengeti 2.0 d\'Interpol contre la cybercriminalité. Cette initiative démontre l\'engagement du pays dans la sécurité numérique régionale et internationale, renforçant sa position de partenaire fiable.',
+      date: '12 Février 2025',
+      category: 'Sécurité',
+      image: 'https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=800'
+    },
+    {
+      title: 'Nouveau Pacte Environnemental du Gabon',
+      excerpt: 'Lancement d\'une stratégie ambitieuse pour une économie verte et durable.',
+      content: 'Le Gabon dévoile son nouveau pacte environnemental, visant à concilier développement économique et préservation de la biodiversité. Avec 85% de forêt tropicale, le pays se positionne comme leader mondial de la conservation.',
+      date: '28 Janvier 2025',
+      category: 'Environnement',
+      image: 'https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=800'
+    }
   ];
 
+  const categories = ['Toutes', 'Politique', 'Économie', 'Diplomatie', 'Sécurité', 'Environnement'];
+  const [activeCategory, setActiveCategory] = React.useState('Toutes');
+
+  const filteredArticles = activeCategory === 'Toutes' 
+    ? articles 
+    : articles.filter(article => article.category === activeCategory);
+
   return (
-    <>
-      {/* Top Bar */}
-      <div className="bg-gray-900 text-white text-sm py-3 border-b border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 text-gray-100 hover:text-white transition-colors duration-200">
-                <MapPin className="h-4 w-4 text-green-400" />
-                <span className="hidden sm:inline">Cocody Danga-Nord, Abidjan</span>
-                <span className="sm:hidden">Abidjan</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-100 hover:text-white transition-colors duration-200">
-                <Phone className="h-4 w-4 text-blue-400" />
-                <span className="hidden md:inline">+225 27 22 44 51 54</span>
-                <span className="md:hidden">Téléphone</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 text-gray-100 hover:text-white transition-colors duration-200">
-              <Mail className="h-4 w-4 text-yellow-400" />
-              <span className="hidden lg:inline">ambga.cotedivoire@diplomatie.gouv.ga</span>
-              <span className="lg:hidden">Email</span>
-            </div>
+    <div className="py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-gray-800 mb-6">Actualités</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Suivez les dernières nouvelles du Gabon, les relations bilatérales et les activités de l'Ambassade
+          </p>
+        </div>
+
+        {/* Category Filter */}
+        <div className="mb-12">
+          <div className="flex flex-wrap justify-center gap-4">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-6 py-2 rounded-full font-medium transition-colors duration-200 ${
+                  activeCategory === category
+                    ? 'bg-green-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
           </div>
         </div>
-      </div>
 
-      {/* Main Header */}
-      <header 
-        ref={headerRef}
-        className="nav-blur sticky top-0 z-50 transition-all duration-300"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
-            <div className={`flex items-center ${headerVisible ? 'animate-slide-in-left' : ''}`}>
-              <Link to="/" className="flex items-center gap-4 group">
-                <div className="w-16 h-16 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 gpu-accelerated">
-                  <img 
-                    src="/Sceau du Gabon.png" 
-                    alt="Sceau de la République du Gabon" 
-                    className="w-full h-full object-contain drop-shadow-lg"
-                  />
+        {/* Articles Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {filteredArticles.map((article, index) => (
+            <article key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url(${article.image})` }}>
+                <div className="h-full bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
+                  <div className="flex items-center gap-2">
+                    <Tag className="h-4 w-4 text-white" />
+                    <span className="bg-white bg-opacity-20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {article.category}
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <h1 className="text-xl font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-200">
-                    Ambassade du Gabon
-                  </h1>
-                  <p className="text-sm text-gray-700 font-medium">République de Côte d'Ivoire</p>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                  <Calendar className="h-4 w-4" />
+                  <span>{article.date}</span>
                 </div>
-              </Link>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className={`hidden lg:flex items-center space-x-2 ${headerVisible ? 'animate-fade-in-down animate-delay-200' : ''}`}>
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  aria-current={location.pathname === item.href ? 'page' : undefined}
-                  className={`px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 relative overflow-hidden group ${
-                    location.pathname === item.href
-                      ? 'text-green-700 bg-green-50 shadow-sm'
-                      : 'text-gray-800 hover:text-green-700 hover:bg-green-50'
-                  }`}
+                
+                <h2 className="text-xl font-bold text-gray-800 mb-3">{article.title}</h2>
+                <p className="text-gray-600 mb-4 line-clamp-2">{article.excerpt}</p>
+                <p className="text-gray-700 mb-6 text-sm leading-relaxed">{article.content}</p>
+                
+                <button 
+                  onClick={() => navigate(`/news/${index + 1}`)} // Simulation de navigation vers article
+                  className="inline-flex items-center text-green-600 hover:text-green-700 font-medium transition-colors duration-200"
                 >
-                  <span className="relative z-10">{item.name}</span>
-                  {location.pathname === item.href && (
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full"></div>
-                  )}
-                </Link>
-              ))}
-            </nav>
+                  Lire l'article complet
+                  <ExternalLink className="h-4 w-4 ml-2" />
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
 
-            {/* Mobile menu button */}
-            <div className={`lg:hidden ${headerVisible ? 'animate-slide-in-right animate-delay-300' : ''}`}>
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-expanded={isMenuOpen}
-                aria-controls="mobile-menu"
-                aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-                className="p-3 text-gray-600 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-xl bg-white shadow-md hover:shadow-lg transition-all duration-300 gpu-accelerated"
+        {/* Newsletter Subscription */}
+        <section className="mt-16 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-2xl p-8 text-center">
+          <h2 className="text-2xl font-bold mb-4">📧 Newsletter de l'Ambassade</h2>
+          <p className="text-lg mb-6 opacity-90">
+            Recevez les actualités du Gabon et les informations importantes de l'Ambassade
+          </p>
+          <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto">
+            <div className="flex gap-4">
+              <input
+                type="email"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                placeholder="Votre adresse email"
+                required
+                disabled={newsletterStatus === 'loading'}
+                className="flex-1 px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-400 disabled:bg-gray-200"
+              />
+              <button 
+                type="submit"
+                disabled={newsletterStatus === 'loading'}
+                className="bg-yellow-500 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200"
               >
-                {isMenuOpen ? 
-                  <X className="h-6 w-6 rotate-90 transition-transform duration-300" /> : 
-                  <Menu className="h-6 w-6 transition-transform duration-300" />
-                }
+                {newsletterStatus === 'loading' ? 'Inscription...' : 'S\'abonner'}
               </button>
             </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden animate-fade-in-down" id="mobile-menu">
-              <div className="px-4 pt-4 pb-6 space-y-2 bg-glass border-t border-gray-200 rounded-b-2xl shadow-xl gpu-accelerated">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    aria-current={location.pathname === item.href ? 'page' : undefined}
-                    className={`block px-4 py-3 text-base font-semibold rounded-xl transition-all duration-300 ${
-                      location.pathname === item.href
-                        ? 'text-green-700 bg-green-100 shadow-sm'
-                        : 'text-gray-800 hover:text-green-700 hover:bg-green-50'
-                    }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                
-                {/* Mobile CTA */}
-                <div className="pt-4 border-t border-gray-200 mt-4">
-                  <Link
-                    to="/services"
-                    className="block w-full text-center btn btn-primary py-3"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Services Consulaires
-                  </Link>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </header>
-    </>
+            {newsletterStatus === 'success' && (
+              <p className="text-green-200 text-sm mt-2">✅ Inscription réussie ! Merci de votre intérêt.</p>
+            )}
+            {newsletterStatus === 'error' && (
+              <p className="text-red-200 text-sm mt-2">❌ Erreur d'inscription. Vérifiez votre email.</p>
+            )}
+          </form>
+        </section>
+      </div>
+    </div>
   );
 };
 
-export default Header;
+export default News;
