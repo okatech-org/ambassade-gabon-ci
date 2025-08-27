@@ -24,19 +24,19 @@ const Header = () => {
       <div className="bg-gray-900 text-white text-sm py-3 border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
-            <div className="flex items-center gap-6 opacity-90">
-              <div className="flex items-center gap-2 hover:opacity-100 transition-opacity">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2 text-gray-100 hover:text-white transition-colors duration-200">
                 <MapPin className="h-4 w-4 text-green-400" />
                 <span className="hidden sm:inline">Cocody Danga-Nord, Abidjan</span>
                 <span className="sm:hidden">Abidjan</span>
               </div>
-              <div className="flex items-center gap-2 hover:opacity-100 transition-opacity">
+              <div className="flex items-center gap-2 text-gray-100 hover:text-white transition-colors duration-200">
                 <Phone className="h-4 w-4 text-blue-400" />
                 <span className="hidden md:inline">+225 27 22 44 51 54</span>
                 <span className="md:hidden">Téléphone</span>
               </div>
             </div>
-            <div className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity">
+            <div className="flex items-center gap-2 text-gray-100 hover:text-white transition-colors duration-200">
               <Mail className="h-4 w-4 text-yellow-400" />
               <span className="hidden lg:inline">ambga.cotedivoire@diplomatie.gouv.ga</span>
               <span className="lg:hidden">Email</span>
@@ -55,13 +55,13 @@ const Header = () => {
             <div className={`flex items-center ${headerVisible ? 'animate-slide-in-left' : ''}`}>
               <Link to="/" className="flex items-center gap-4 group">
                 <div className="w-18 h-18 bg-gabon-gradient rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300 gpu-accelerated">
-                  <span className="text-white font-bold text-2xl" aria-label="Gabon">GA</span>
+                  <span className="text-white font-bold text-xl" aria-label="Gabon">GA</span>
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-800 group-hover:text-green-600 transition-colors">
+                  <h1 className="text-xl font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-200">
                     Ambassade du Gabon
                   </h1>
-                  <p className="text-sm text-gray-600 font-medium">République de Côte d'Ivoire</p>
+                  <p className="text-sm text-gray-700 font-medium">République de Côte d'Ivoire</p>
                 </div>
               </Link>
             </div>
@@ -75,8 +75,8 @@ const Header = () => {
                   aria-current={location.pathname === item.href ? 'page' : undefined}
                   className={`px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 relative overflow-hidden group ${
                     location.pathname === item.href
-                      ? 'text-green-600 bg-green-50'
-                      : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                      ? 'text-green-700 bg-green-50 shadow-sm'
+                      : 'text-gray-800 hover:text-green-700 hover:bg-green-50'
                   }`}
                 >
                   <span className="relative z-10">{item.name}</span>
@@ -115,8 +115,8 @@ const Header = () => {
                     aria-current={location.pathname === item.href ? 'page' : undefined}
                     className={`block px-4 py-3 text-base font-semibold rounded-xl transition-all duration-300 ${
                       location.pathname === item.href
-                        ? 'text-green-600 bg-green-100'
-                        : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                        ? 'text-green-700 bg-green-100 shadow-sm'
+                        : 'text-gray-800 hover:text-green-700 hover:bg-green-50'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
