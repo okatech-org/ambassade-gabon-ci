@@ -138,7 +138,7 @@ const Home = () => {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center text-white overflow-hidden"
+        className="relative min-h-[50vh] md:min-h-screen flex items-center justify-center text-white"
         style={{
           backgroundImage: 'url(/gabonci.jpeg)',
           backgroundSize: 'cover',
@@ -147,6 +147,23 @@ const Home = () => {
         }}
         aria-labelledby="hero-title"
       >
+        <style jsx>{`
+          @media (max-width: 768px) {
+            section {
+              background-size: contain !important;
+              background-position: center center !important;
+              min-height: 40vh !important;
+              background-color: #f5f5f5 !important;
+            }
+          }
+          @media (min-width: 769px) and (max-width: 1024px) {
+            section {
+              background-size: cover !important;
+              background-position: center center !important;
+            }
+          }
+        `}</style>
+        
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white bg-opacity-5 rounded-full animate-float"></div>
@@ -245,27 +262,29 @@ const Home = () => {
               <strong className="text-green-600"> S.E.M. Brice Clotaire Oligui Nguema</strong>, 
               nous œuvrons quotidiennement au renforcement des relations exceptionnelles qui unissent le Gabon et la Côte d'Ivoire.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center group hover-lift">
-                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-                  <Globe className="h-8 w-8" />
+            <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+              <div className="flex md:grid md:grid-cols-3 gap-6 md:gap-8 min-w-max md:min-w-0">
+                <div className="text-center group hover-lift flex-shrink-0 w-56 md:w-auto">
+                  <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                    <Globe className="h-8 w-8" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-green-600 transition-colors whitespace-nowrap">Relations Diplomatiques</h3>
+                  <p className="text-gray-600 text-sm whitespace-nowrap">Renforcement des liens bilatéraux</p>
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">Relations Diplomatiques</h3>
-                <p className="text-gray-600 text-sm">Renforcement des liens bilatéraux</p>
-              </div>
-              <div className="text-center group hover-lift">
-                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
-                  <Shield className="h-8 w-8" />
+                <div className="text-center group hover-lift flex-shrink-0 w-56 md:w-auto">
+                  <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+                    <Shield className="h-8 w-8" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors whitespace-nowrap">Protection Consulaire</h3>
+                  <p className="text-gray-600 text-sm whitespace-nowrap">Assistance aux ressortissants</p>
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">Protection Consulaire</h3>
-                <p className="text-gray-600 text-sm">Assistance aux ressortissants</p>
-              </div>
-              <div className="text-center group hover-lift">
-                <div className="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-500 group-hover:text-white transition-all duration-300">
-                  <Heart className="h-8 w-8" />
+                <div className="text-center group hover-lift flex-shrink-0 w-56 md:w-auto">
+                  <div className="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-500 group-hover:text-white transition-all duration-300">
+                    <Heart className="h-8 w-8" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-yellow-600 transition-colors whitespace-nowrap">Solidarité Fraternelle</h3>
+                  <p className="text-gray-600 text-sm whitespace-nowrap">Accompagnement de la diaspora</p>
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-yellow-600 transition-colors">Solidarité Fraternelle</h3>
-                <p className="text-gray-600 text-sm">Accompagnement de la diaspora</p>
               </div>
             </div>
           </div>

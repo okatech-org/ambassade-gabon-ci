@@ -1,116 +1,72 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Facebook } from 'lucide-react';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Logo Section */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <img 
-                src="/Sceau du Gabon.png" 
-                alt="Sceau de la République du Gabon" 
-                className="w-12 h-12 object-contain"
-              />
-              <div>
-                <h3 className="text-lg font-semibold text-white">Ambassade du Gabon</h3>
-                <p className="text-gray-300 text-sm">République de Côte d'Ivoire</p>
-              </div>
-            </div>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Représentation diplomatique officielle de la République du Gabon en République de Côte d'Ivoire.
-            </p>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <div className="space-y-3">
-              <div className="flex items-start gap-2">
-                <MapPin className="h-5 w-5 mt-0.5 text-yellow-400" />
-                <div>
-                  <p>Cocody Danga-Nord</p>
-                  <p>Derrière la Direction de la Géologie</p>
-                  <p>01 BP 3765 Abidjan 01</p>
-                  <p>Côte d'Ivoire</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-5 w-5 text-yellow-400" />
-                <div>
-                  <p>+225 27 22 44 51 54</p>
-                  <p>+225 27 22 44 66 84</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-5 w-5 text-yellow-400" />
-                <p>ambga.cotedivoire@diplomatie.gouv.ga</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5 text-yellow-400" />
-                <p>Lun-Ven: 8h30 - 15h30</p>
-              </div>
+          <div className="flex items-center gap-3">
+            <img 
+              src="/Sceau du Gabon.png" 
+              alt="Sceau de la République du Gabon" 
+              className="w-10 h-10 object-contain"
+            />
+            <div>
+              <h3 className="text-base font-semibold text-white">Ambassade du Gabon</h3>
+              <p className="text-gray-300 text-sm">République de Côte d'Ivoire</p>
             </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li><Link to="/services" className="hover:text-yellow-400 transition-colors">Passeports</Link></li>
-              <li><Link to="/services" className="hover:text-yellow-400 transition-colors">Visas</Link></li>
-              <li><Link to="/services" className="hover:text-yellow-400 transition-colors">Légalisation</Link></li>
-              <li><Link to="/services" className="hover:text-yellow-400 transition-colors">État Civil</Link></li>
-              <li><Link to="/audience" className="hover:text-yellow-400 transition-colors">Demande d'Audience</Link></li>
-            </ul>
-          </div>
-
-          {/* Navigation */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Navigation</h3>
-            <ul className="space-y-2">
-              <li><Link to="/about" className="hover:text-yellow-400 transition-colors">À Propos</Link></li>
-              <li><Link to="/news" className="hover:text-yellow-400 transition-colors">Actualités</Link></li>
-              <li><Link to="/gabon" className="hover:text-yellow-400 transition-colors">Découvrir le Gabon</Link></li>
-              <li><Link to="/contact" className="hover:text-yellow-400 transition-colors">Contact</Link></li>
-            </ul>
+          {/* Services rapides */}
+          <div className="flex flex-wrap gap-4 text-sm">
+            <Link to="/services" className="hover:text-yellow-400 transition-colors">Visas</Link>
+            <span className="text-gray-500">•</span>
+            <Link to="/services" className="hover:text-yellow-400 transition-colors">Passeports</Link>
+            <span className="text-gray-500">•</span>
+            <Link to="/audience" className="hover:text-yellow-400 transition-colors">Audience</Link>
+            <span className="text-gray-500">•</span>
+            <Link to="/contact" className="hover:text-yellow-400 transition-colors">Contact</Link>
           </div>
 
           {/* Social Media */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Suivez-nous</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="bg-blue-600 p-2 rounded hover:bg-blue-700 transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="bg-blue-400 p-2 rounded hover:bg-blue-500 transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="bg-blue-800 p-2 rounded hover:bg-blue-900 transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </div>
-            <div className="mt-6">
-              <h4 className="font-medium mb-2">Urgences Consulaires</h4>
-              <p className="text-sm">24h/7j : +225 07 XX XX XX XX</p>
-            </div>
+          <div className="flex items-center space-x-3">
+            <span className="text-sm text-gray-300 mr-2">Suivez-nous:</span>
+            <a 
+              href="https://www.facebook.com/ambassade.gabon.ci" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-blue-600 p-2 rounded hover:bg-blue-700 transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook className="h-4 w-4" />
+            </a>
+            <a 
+              href="https://www.tiktok.com/@ambassade.gabon.ci" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-black p-2 rounded hover:bg-gray-900 transition-colors"
+              aria-label="TikTok"
+            >
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.34 6.34 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
 
       <div className="border-t border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-sm text-gray-400">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+            <p>
               © 2025 Ambassade de la République du Gabon en République de Côte d'Ivoire. Tous droits réservés.
             </p>
-            <div className="flex space-x-6 mt-4 sm:mt-0">
-              <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">Mentions Légales</a>
-              <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">Politique de Confidentialité</a>
-            </div>
+            <p>
+              Conçu et développé par <a href="https://okatech.dev" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300 font-semibold">OKA Tech</a>
+            </p>
           </div>
         </div>
       </div>
