@@ -158,37 +158,17 @@ const Home = () => {
         
         <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <div className="space-y-8">
-            {/* Flag Animation */}
-            <div className={`flex justify-center items-center gap-8 mb-12 ${heroVisible ? 'animate-scale-in animate-delay-200' : 'opacity-0'}`}>
-              <div 
-                className="w-24 h-16 bg-gradient-to-b from-green-500 via-yellow-400 to-blue-500 rounded-lg border-2 border-white shadow-xl hover-scale"
-                aria-label="Drapeau du Gabon"
-                role="img"
-              ></div>
-              <div className="text-4xl animate-gentle-pulse" role="img" aria-label="Poignée de main symbolisant l'amitié">🤝</div>
-              <div 
-                className="w-24 h-16 bg-gradient-to-b from-orange-500 via-white to-green-500 rounded-lg border-2 border-white shadow-xl hover-scale"
-                aria-label="Drapeau de la Côte d'Ivoire"
-                role="img"
-              ></div>
-            </div>
-            
             {/* Main Title */}
-            <div className={`${heroVisible ? 'animate-fade-in-up animate-delay-300' : 'opacity-0'}`}>
+            <div className={`${heroVisible ? 'animate-fade-in-up animate-delay-200' : 'opacity-0'}`}>
               <h1 id="hero-title" className="text-5xl md:text-7xl font-bold mb-6 text-balance">
-                <span className="inline-flex items-center gap-3">
-                  <Sparkles className="h-12 w-12 md:h-16 md:w-16 text-yellow-300 animate-gentle-pulse" />
-                  Bienvenue
-                </span>
-                <br />
                 <span className="bg-gradient-to-r from-white via-yellow-200 to-white bg-clip-text text-transparent">
-                  à l'Ambassade du Gabon
+                  Ambassade du Gabon
                 </span>
               </h1>
             </div>
             
             {/* Subtitle */}
-            <div className={`${heroVisible ? 'animate-fade-in-up animate-delay-400' : 'opacity-0'}`}>
+            <div className={`${heroVisible ? 'animate-fade-in-up animate-delay-300' : 'opacity-0'}`}>
               <p className="text-xl md:text-3xl mb-12 max-w-5xl mx-auto font-light text-balance opacity-95">
                 L'Ambassade du Gabon en Côte d'Ivoire : 
                 <span className="font-semibold text-yellow-200"> Votre lien avec la Patrie</span>
@@ -196,7 +176,7 @@ const Home = () => {
             </div>
             
             {/* CTA Buttons */}
-            <div className={`flex flex-col sm:flex-row gap-6 justify-center ${heroVisible ? 'animate-fade-in-up animate-delay-500' : 'opacity-0'}`}>
+            <div className={`flex flex-col sm:flex-row gap-6 justify-center ${heroVisible ? 'animate-fade-in-up animate-delay-400' : 'opacity-0'}`}>
               <Link
                 to="/services"
                 className="btn btn-primary text-lg px-10 py-4 hover-lift group"
