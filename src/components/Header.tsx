@@ -54,7 +54,7 @@ const Header = () => {
           <div className="flex items-center justify-between h-24">
             <div className={`flex items-center ${headerVisible ? 'animate-slide-in-left' : ''}`}>
               <Link to="/" className="flex items-center gap-4 group">
-                <div className="w-18 h-18 bg-gabon-gradient rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                <div className="w-18 h-18 bg-gabon-gradient rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300 gpu-accelerated">
                   <span className="text-white font-bold text-2xl" aria-label="Gabon">GA</span>
                 </div>
                 <div>
@@ -94,7 +94,7 @@ const Header = () => {
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
                 aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-                className="p-3 text-gray-600 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-xl bg-white shadow-md hover:shadow-lg transition-all duration-300"
+                className="p-3 text-gray-600 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-xl bg-white shadow-md hover:shadow-lg transition-all duration-300 gpu-accelerated"
               >
                 {isMenuOpen ? 
                   <X className="h-6 w-6 rotate-90 transition-transform duration-300" /> : 
@@ -107,7 +107,7 @@ const Header = () => {
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="lg:hidden animate-fade-in-down" id="mobile-menu">
-              <div className="px-4 pt-4 pb-6 space-y-2 bg-glass border-t border-gray-200 rounded-b-2xl shadow-xl">
+              <div className="px-4 pt-4 pb-6 space-y-2 bg-glass border-t border-gray-200 rounded-b-2xl shadow-xl gpu-accelerated">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}

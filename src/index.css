@@ -375,6 +375,7 @@ body {
 /* Apple-style Hover Effects */
 .hover-lift {
   transition: all var(--transition-base);
+  will-change: transform;
 }
 
 .hover-lift:hover {
@@ -384,6 +385,7 @@ body {
 
 .hover-scale {
   transition: all var(--transition-base);
+  will-change: transform;
 }
 
 .hover-scale:hover {
@@ -392,10 +394,32 @@ body {
 
 .hover-glow {
   transition: all var(--transition-base);
+  will-change: box-shadow;
 }
 
 .hover-glow:hover {
   box-shadow: 0 0 30px rgba(20, 184, 166, 0.3);
+}
+
+/* Enhanced Card Hover Effects */
+.card-hover-enhanced {
+  transition: all var(--transition-base);
+  will-change: transform, box-shadow;
+}
+
+.card-hover-enhanced:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Smooth Image Loading */
+.image-fade-in {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-fade-in.loaded {
+  opacity: 1;
 }
 
 /* Apple-style Button Components */
@@ -412,6 +436,7 @@ body {
   border: none;
   cursor: pointer;
   transition: all var(--transition-base);
+  will-change: transform, box-shadow;
   text-decoration: none;
   white-space: nowrap;
   position: relative;
@@ -431,6 +456,10 @@ body {
 
 .btn:hover::before {
   left: 100%;
+}
+
+.btn:active {
+  transform: translateY(1px);
 }
 
 .btn:disabled {
@@ -489,6 +518,7 @@ body {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   transition: all var(--transition-base);
+  will-change: border-color, box-shadow, background;
 }
 
 .form-input:focus {
@@ -517,6 +547,7 @@ body {
   box-shadow: var(--shadow-base);
   overflow: hidden;
   transition: all var(--transition-base);
+  will-change: transform, box-shadow, border-color;
 }
 
 .card:hover {
@@ -528,6 +559,7 @@ body {
 .card-elevated {
   background: white;
   box-shadow: var(--shadow-lg);
+  will-change: transform, box-shadow;
 }
 
 .card-elevated:hover {
@@ -540,6 +572,25 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  will-change: background, backdrop-filter;
+}
+
+/* Performance Optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Apple-style Loading States */
@@ -676,6 +727,7 @@ body {
 .interactive {
   cursor: pointer;
   transition: all var(--transition-base);
+  will-change: transform;
 }
 
 .interactive:hover {
@@ -692,6 +744,38 @@ body {
 
 .glow-on-focus:focus-within {
   box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+}
+
+/* Enhanced Focus States */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Improved Button States */
+.btn-enhanced {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.btn-enhanced::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-enhanced:active::after {
+  width: 300px;
+  height: 300px;
 }
 
 /* Apple-style Status Indicators */

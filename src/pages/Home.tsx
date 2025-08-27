@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
-import { ExternalLink, FileText, Calendar, Users, ArrowRight, Sparkles, Globe, Shield, Heart } from 'lucide-react';
+import { ExternalLink, FileText, Calendar, Users, ArrowRight, Sparkles, Globe, Shield, Heart, CheckCircle, Star, Award, MapPin, Phone, Mail } from 'lucide-react';
 import FAQ from '../components/FAQ';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
@@ -14,6 +14,8 @@ const Home = () => {
   const [heroRef, heroVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [servicesRef, servicesVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [newsRef, newsVisible] = useIntersectionObserver({ threshold: 0.1 });
+  const [statsRef, statsVisible] = useIntersectionObserver({ threshold: 0.1 });
+  const [testimonialsRef, testimonialsVisible] = useIntersectionObserver({ threshold: 0.1 });
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,28 +47,32 @@ const Home = () => {
       description: 'Visa touristique, d\'affaires ou de transit pour le Gabon',
       icon: FileText,
       link: '/services',
-      color: 'from-green-500 to-emerald-600'
+      color: 'from-green-500 to-emerald-600',
+      delay: '100'
     },
     {
       title: 'Renouvellement Passeport',
       description: 'Service de renouvellement pour ressortissants gabonais',
       icon: FileText,
       link: '/services',
-      color: 'from-blue-500 to-cyan-600'
+      color: 'from-blue-500 to-cyan-600',
+      delay: '200'
     },
     {
       title: 'Légalisation Documents',
       description: 'Authentification et légalisation de vos documents',
-      icon: FileText,
+      icon: Shield,
       link: '/services',
-      color: 'from-purple-500 to-violet-600'
+      color: 'from-purple-500 to-violet-600',
+      delay: '300'
     },
     {
       title: 'Audience Ambassadeur',
       description: 'Demande de rendez-vous avec Son Excellence l\'Ambassadeur',
       icon: Calendar,
       link: '/audience',
-      color: 'from-yellow-500 to-orange-600'
+      color: 'from-yellow-500 to-orange-600',
+      delay: '400'
     }
   ];
 
@@ -75,20 +81,51 @@ const Home = () => {
       title: 'Élection Présidentielle 2025',
       excerpt: 'S.E.M. Brice Clotaire Oligui Nguema élu 4ème Président du Gabon avec 90,35% des voix',
       date: '15 Avril 2025',
-      category: 'Politique'
+      category: 'Politique',
+      image: 'https://images.pexels.com/photos/6794590/pexels-photo-6794590.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       title: 'Projets Majeurs 2025',
       excerpt: 'Lancement des trois grands chantiers : Port de Mayumba, ligne ferroviaire Bélinga-Boué-Mayumba, barrage de Boué',
       date: '10 Mars 2025',
-      category: 'Économie'
+      category: 'Économie',
+      image: 'https://images.pexels.com/photos/1106468/pexels-photo-1106468.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       title: 'Relations Bilatérales',
       excerpt: 'Renforcement de la coopération Gabon-Côte d\'Ivoire dans les secteurs agricole, minier et énergétique',
       date: '5 Mars 2025',
-      category: 'Diplomatie'
+      category: 'Diplomatie',
+      image: 'https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=800'
     }
+  ];
+
+  const testimonials = [
+    {
+      name: 'Marie Obame',
+      role: 'Ressortissante Gabonaise',
+      content: 'L\'équipe de l\'ambassade m\'a aidée rapidement pour le renouvellement de mon passeport. Service professionnel et efficace.',
+      rating: 5
+    },
+    {
+      name: 'Jean-Baptiste Kouassi',
+      role: 'Homme d\'affaires Ivoirien',
+      content: 'Excellent accompagnement pour l\'obtention de mon visa d\'affaires. Procédure claire et délais respectés.',
+      rating: 5
+    },
+    {
+      name: 'Dr. Fatou Ndiaye',
+      role: 'Étudiante',
+      content: 'Assistance remarquable lors de mon urgence médicale. L\'ambassade a été réactive et m\'a orientée efficacement.',
+      rating: 5
+    }
+  ];
+
+  const stats = [
+    { number: '60+', label: 'Années de Relations', icon: Globe },
+    { number: '400B', label: 'FCFA d\'Échanges', icon: Award },
+    { number: '27', label: 'Accords Bilatéraux', icon: FileText },
+    { number: '24/7', label: 'Assistance d\'Urgence', icon: Shield }
   ];
 
   return (
@@ -169,26 +206,6 @@ const Home = () => {
                 Demander une Audience
               </Link>
             </div>
-            
-            {/* Stats */}
-            <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 ${heroVisible ? 'animate-fade-in-up animate-delay-600' : 'opacity-0'}`}>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-2">60+</div>
-                <div className="text-sm md:text-base opacity-90">Années de Relations</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-2">400B</div>
-                <div className="text-sm md:text-base opacity-90">FCFA d'Échanges</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-2">27</div>
-                <div className="text-sm md:text-base opacity-90">Accords Bilatéraux</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-2">24/7</div>
-                <div className="text-sm md:text-base opacity-90">Assistance d'Urgence</div>
-              </div>
-            </div>
           </div>
         </div>
         
@@ -200,8 +217,38 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section 
+        ref={statsRef}
+        className="py-20 bg-white relative overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 ${statsVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <div 
+                  key={index} 
+                  className={`text-center group ${statsVisible ? `animate-scale-in animate-delay-${(index + 1) * 100}` : 'opacity-0'}`}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Icon className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm md:text-base text-gray-600 font-medium">
+                    {stat.label}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Mission Statement */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
@@ -213,25 +260,25 @@ const Home = () => {
               nous œuvrons quotidiennement au renforcement des relations exceptionnelles qui unissent le Gabon et la Côte d'Ivoire.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="text-center group hover-lift">
+                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
                   <Globe className="h-8 w-8" />
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-2">Relations Diplomatiques</h3>
+                <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">Relations Diplomatiques</h3>
                 <p className="text-gray-600 text-sm">Renforcement des liens bilatéraux</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="text-center group hover-lift">
+                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
                   <Shield className="h-8 w-8" />
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-2">Protection Consulaire</h3>
+                <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">Protection Consulaire</h3>
                 <p className="text-gray-600 text-sm">Assistance aux ressortissants</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="text-center group hover-lift">
+                <div className="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-500 group-hover:text-white transition-all duration-300">
                   <Heart className="h-8 w-8" />
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-2">Solidarité Fraternelle</h3>
+                <h3 className="font-semibold text-gray-800 mb-2 group-hover:text-yellow-600 transition-colors">Solidarité Fraternelle</h3>
                 <p className="text-gray-600 text-sm">Accompagnement de la diaspora</p>
               </div>
             </div>
@@ -242,7 +289,7 @@ const Home = () => {
       {/* Quick Services */}
       <section 
         ref={servicesRef}
-        className="py-20 bg-gradient-to-br from-gray-50 to-white" 
+        className="py-20 bg-white" 
         aria-labelledby="services-title"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -259,14 +306,14 @@ const Home = () => {
                   key={index}
                   to={service.link}
                   role="listitem"
-                  className={`card hover-lift group cursor-pointer p-8 ${servicesVisible ? `animate-scale-in animate-delay-${(index + 1) * 100}` : 'opacity-0'}`}
+                  className={`card hover-lift group cursor-pointer p-8 ${servicesVisible ? `animate-scale-in animate-delay-${service.delay}` : 'opacity-0'}`}
                   aria-describedby={`service-desc-${index}`}
                   onClick={() => handleServiceClick(service.link)}
                 >
                   <div className={`flex items-center justify-center w-16 h-16 bg-gradient-to-br ${service.color} text-white rounded-2xl mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
                     <Icon className="h-8 w-8" aria-hidden="true" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">{service.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">{service.title}</h3>
                   <p id={`service-desc-${index}`} className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
                   <div className="flex items-center text-green-600 group-hover:text-green-700 font-medium">
                     <span>En savoir plus</span>
@@ -282,7 +329,7 @@ const Home = () => {
       {/* Latest News */}
       <section 
         ref={newsRef}
-        className="py-20 bg-white" 
+        className="py-20 bg-gradient-to-br from-gray-50 to-white" 
         aria-labelledby="news-title"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -307,11 +354,16 @@ const Home = () => {
                 className={`card-elevated hover-lift overflow-hidden group ${newsVisible ? `animate-fade-in-up animate-delay-${(index + 1) * 200}` : 'opacity-0'}`}
                 role="listitem"
               >
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-medium px-4 py-2 rounded-full">
+                <div className="h-48 bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: `url(${article.image})` }}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4">
+                    <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-medium px-3 py-1 rounded-full">
                       {article.category}
                     </span>
+                  </div>
+                </div>
+                <div className="p-8">
+                  <div className="flex items-center justify-between mb-4">
                     <time className="text-sm text-gray-500 font-medium">{article.date}</time>
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors duration-300">{article.title}</h3>
@@ -325,6 +377,41 @@ const Home = () => {
                   </Link>
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section 
+        ref={testimonialsRef}
+        className="py-20 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`text-center mb-16 ${testimonialsVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Témoignages</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Ce que disent nos ressortissants et visiteurs de nos services
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index}
+                className={`card-elevated p-8 text-center hover-lift ${testimonialsVisible ? `animate-scale-in animate-delay-${(index + 1) * 150}` : 'opacity-0'}`}
+              >
+                <div className="flex justify-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-6 italic leading-relaxed">"{testimonial.content}"</p>
+                <div>
+                  <h4 className="font-semibold text-gray-800">{testimonial.name}</h4>
+                  <p className="text-gray-600 text-sm">{testimonial.role}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -395,6 +482,42 @@ const Home = () => {
 
       {/* FAQ Section */}
       <FAQ />
+
+      {/* Contact Quick Access */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Contact Rapide</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Besoin d'assistance ? Contactez-nous directement
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center group hover-lift">
+              <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                <MapPin className="h-8 w-8" />
+              </div>
+              <h3 className="font-semibold text-gray-800 mb-2">Adresse</h3>
+              <p className="text-gray-600 text-sm">Cocody Danga-Nord, Abidjan</p>
+            </div>
+            <div className="text-center group hover-lift">
+              <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+                <Phone className="h-8 w-8" />
+              </div>
+              <h3 className="font-semibold text-gray-800 mb-2">Téléphone</h3>
+              <p className="text-gray-600 text-sm">+225 27 22 44 51 54</p>
+            </div>
+            <div className="text-center group hover-lift">
+              <div className="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-500 group-hover:text-white transition-all duration-300">
+                <Mail className="h-8 w-8" />
+              </div>
+              <h3 className="font-semibold text-gray-800 mb-2">Email</h3>
+              <p className="text-gray-600 text-sm">ambga.cotedivoire@diplomatie.gouv.ga</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-700 text-white relative overflow-hidden" aria-labelledby="cta-title">
