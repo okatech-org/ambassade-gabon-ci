@@ -138,7 +138,13 @@ const Home = () => {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center bg-gabon-gradient text-white overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center text-white overflow-hidden"
+        style={{
+          backgroundImage: 'url(/gabonci.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
         aria-labelledby="hero-title"
       >
         {/* Animated Background Elements */}
@@ -148,7 +154,7 @@ const Home = () => {
           <div className="absolute bottom-1/4 left-1/3 w-32 h-32 bg-white bg-opacity-5 rounded-full animate-float animate-delay-500"></div>
         </div>
         
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
         
         <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <div className="space-y-8">
